@@ -1,76 +1,248 @@
-# Text Scanner App - OCR POC
+# 📸 Scan Text App
 
-A simple React Native Expo app that scans text from photos using OCR (Optical Character Recognition).
+<div align="center">
 
-## Features
+A powerful, open-source React Native mobile app for scanning and extracting text from images using OCR (Optical Character Recognition).
 
-- Take a photo using your device camera
-- Automatically extract text from the photo using OCR.space API
-- Display extracted text on screen
-- Copy extracted text to clipboard
-- Automatically delete photos after processing
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+[![Expo](https://img.shields.io/badge/Expo-~54.0.20-blue.svg)](https://expo.dev/)
+[![React Native](https://img.shields.io/badge/React%20Native-0.81.5-blue.svg)](https://reactnative.dev/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-## Tech Stack
+[Features](#-features) • [Demo](#-demo) • [Installation](#-installation) • [Usage](#-usage) • [Contributing](#-contributing) • [License](#-license)
 
-- **React Native** with **Expo**
-- **expo-camera** - Camera functionality
-- **expo-image-picker** - Image capture
-- **expo-clipboard** - Copy to clipboard
-- **expo-file-system** - File management
-- **OCR.space API** - Free OCR service (25,000 requests/month)
+</div>
 
-## Setup
+---
 
-1. Install dependencies:
+## ✨ Features
+
+- 📷 **Camera with Guide Overlay** - Align text perfectly with visual guides
+- 🔍 **High-Accuracy OCR** - Extract text from images with detailed debugging
+- 📋 **Copy to Clipboard** - One-tap copy for easy sharing
+- 🔒 **Privacy-First** - Photos automatically deleted after processing
+- ⚡ **Real-time Processing** - Fast OCR with progress indicators
+- 🐛 **Debug Mode** - Detailed network logs and API response analysis
+- 🎨 **Clean UI** - Modern, intuitive interface
+- 🌐 **Cross-Platform** - Works on iOS, Android, and Web
+
+## 🎬 Demo
+
+**Scan with Guide:**
+- Professional camera interface with alignment guides
+- Green corner markers for precise framing
+- Darkened overlay for clear guidance
+
+**Quick Scan:**
+- Instant photo capture with built-in cropping
+- Fast processing for simple documents
+
+## 🚀 Installation
+
+### Prerequisites
+
+- Node.js 18+ and pnpm
+- Expo Go app (for testing on physical device)
+- iOS Simulator or Android Emulator (optional)
+
+### Steps
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/scan-text-app.git
+   cd scan-text-app
+   ```
+
+2. **Install dependencies**
    ```bash
    pnpm install
    ```
 
-2. Start the development server:
+3. **Set up environment variables**
+   ```bash
+   # Copy the example environment file
+   cp .env.example .env
+
+   # Edit .env and add your OCR.space API key (optional)
+   # If you skip this step, the app will use a demo API key with rate limits
+   ```
+
+   Get your free API key at [OCR.space](https://ocr.space/ocrapi) (25,000 requests/month free tier)
+
+4. **Start the development server**
    ```bash
    pnpm start
    ```
 
-3. Run on your device:
-   - Scan the QR code with **Expo Go** app (iOS/Android)
-   - Or press `i` for iOS simulator / `a` for Android emulator
+5. **Run on your device**
+   - **Mobile**: Scan QR code with Expo Go app ([iOS](https://apps.apple.com/app/expo-go/id982107779) / [Android](https://play.google.com/store/apps/details?id=host.exp.exponent))
+   - **iOS Simulator**: Press `i` in terminal
+   - **Android Emulator**: Press `a` in terminal
+   - **Web Browser**: Press `w` in terminal
 
-## Usage
+## 📱 Usage
 
-1. Tap the "Scan Text" button
-2. Allow camera permissions when prompted
-3. Take a photo of text you want to extract
-4. Wait for OCR processing (usually 2-5 seconds)
-5. View the extracted text on screen
-6. Tap "Copy to Clipboard" to copy the text
-7. Paste the text anywhere on your phone
+### Basic Workflow
 
-## Important Notes
+1. **Scan with Guide** (Recommended)
+   - Tap "📷 Scan with Guide" button
+   - Camera opens with alignment overlay
+   - Position text within the square guide
+   - Tap capture button
+   - Text appears automatically
 
-- **Camera Permission**: The app will request camera access on first use
-- **Internet Required**: OCR processing requires an internet connection
-- **Photo Privacy**: Photos are automatically deleted after text extraction
-- **API Limits**: Free tier allows 25,000 requests/month via OCR.space
+2. **Quick Scan** (Alternative)
+   - Tap "Quick Scan (No Guide)"
+   - Take photo and crop as needed
+   - Text is extracted and displayed
 
-## API Key
+3. **Copy & Share**
+   - Review extracted text
+   - Tap "📋 Copy to Clipboard"
+   - Paste anywhere on your device
 
-The app uses a free OCR.space API key included in the code. For production use, you should:
-1. Register at https://ocr.space/ocrapi
-2. Get your own API key
-3. Replace the key in `app/index.tsx`
+### Debug Mode
 
-## File Structure
+Check the browser console or debug panel for:
+- OCR API response times
+- Image quality scores
+- Confidence levels
+- Error details
+
+## 🔧 Configuration
+
+### Environment Variables
+
+The app uses environment variables for configuration. Edit your `.env` file:
+
+```bash
+# Required: Your OCR.space API key
+# Get one free at https://ocr.space/ocrapi (25,000 requests/month)
+OCR_API_KEY=your_api_key_here
+
+# Optional: Enable debug logging
+DEBUG=false
+
+# Optional: OCR Engine (1=faster, 2=more accurate)
+OCR_ENGINE=2
+
+# Optional: OCR Language (eng, spa, fra, deu, etc.)
+OCR_LANGUAGE=eng
+```
+
+**Note:** If you don't set `OCR_API_KEY`, the app will use a demo key with rate limits.
+
+### Customization
+
+**Camera Guide Dimensions** (`app/camera.tsx`):
+```typescript
+const GUIDE_WIDTH = SCREEN_WIDTH * 0.85;  // 85% of screen
+const GUIDE_HEIGHT = SCREEN_HEIGHT * 0.4; // 40% of screen
+```
+
+**OCR Settings** (`app/index.tsx`):
+```typescript
+formData.append('language', 'eng');      // Language: eng, spa, fra, etc.
+formData.append('OCREngine', '2');       // Engine: 1 or 2
+formData.append('scale', 'true');        // Image scaling
+formData.append('detectOrientation', 'true'); // Auto-rotate
+```
+
+## 🏗️ Tech Stack
+
+| Category | Technology |
+|----------|-----------|
+| **Framework** | React Native 0.81.5 |
+| **Platform** | Expo ~54.0.20 |
+| **Routing** | Expo Router ~6.0.14 |
+| **Language** | TypeScript 5.9.2 |
+| **Camera** | expo-camera 17.0.8 |
+| **OCR** | OCR.space API |
+| **HTTP Client** | axios 1.13.1 |
+| **Package Manager** | pnpm |
+
+## 📂 Project Structure
 
 ```
-app/
-├── index.tsx       # Main scanner screen
-└── _layout.tsx     # App layout configuration
+scan-text-app/
+├── app/
+│   ├── index.tsx          # Main scanner screen
+│   ├── camera.tsx         # Camera with guide overlay
+│   └── _layout.tsx        # App navigation layout
+├── assets/                # Images, fonts, icons
+├── components/            # Reusable UI components
+├── constants/             # App constants
+├── hooks/                 # Custom React hooks
+├── types/                 # TypeScript type definitions
+│   └── env.d.ts          # Environment variable types
+├── .env.example          # Environment variables template
+├── .gitignore            # Git ignore rules
+├── app.json              # Expo configuration
+├── babel.config.js       # Babel configuration
+├── package.json          # Dependencies
+├── tsconfig.json         # TypeScript config
+├── LICENSE               # MIT License
+├── README.md             # This file
+├── CONTRIBUTING.md       # Contribution guidelines
+└── CODE_OF_CONDUCT.md    # Community guidelines
 ```
 
-## Future Enhancements
+## 🤝 Contributing
 
-- Support for multiple languages
-- Batch processing of multiple photos
-- History of scanned texts
-- Export to different formats (PDF, TXT)
-- Offline OCR using on-device processing
+We love contributions! Please read our [Contributing Guide](CONTRIBUTING.md) to get started.
+
+**Quick Start for Contributors:**
+1. Fork the repo
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
+## 🐛 Known Issues
+
+- **Web platform**: Camera guide overlay not available (uses standard image picker)
+- **OCR.space free tier**: Limited to 25,000 requests/month
+- **Image quality**: Poor lighting or blurry images may reduce accuracy
+
+## 🗺️ Roadmap
+
+- [x] Environment variable support for API keys ✅
+- [ ] Multiple OCR provider support (AWS Textract, Google Vision)
+- [ ] Offline OCR with Tesseract.js
+- [ ] Multi-language support UI
+- [ ] Batch processing
+- [ ] Text editing before copy
+- [ ] History/favorites
+- [ ] Dark mode
+- [ ] Export to PDF/TXT
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Expo](https://expo.dev/) - Amazing React Native framework
+- [OCR.space](https://ocr.space/) - Free OCR API
+- [React Native Community](https://reactnative.dev/) - Excellent documentation
+
+## 📧 Contact
+
+**Project Maintainer**: [Your Name]
+
+- GitHub: [@yourusername](https://github.com/yourusername)
+- Email: your.email@example.com
+
+**Project Link**: [https://github.com/yourusername/scan-text-app](https://github.com/yourusername/scan-text-app)
+
+---
+
+<div align="center">
+
+**Built with ❤️ using React Native & Expo**
+
+If you found this helpful, please ⭐ star the repo!
+
+</div>

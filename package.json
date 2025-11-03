@@ -1,7 +1,30 @@
 {
-  "name": "scan-check-expo",
-  "main": "expo-router/entry",
+  "name": "scan-text-app",
   "version": "1.0.0",
+  "description": "A powerful, open-source React Native mobile app for scanning and extracting text from images using OCR",
+  "main": "expo-router/entry",
+  "keywords": [
+    "ocr",
+    "text-scanner",
+    "react-native",
+    "expo",
+    "camera",
+    "image-to-text",
+    "text-extraction",
+    "mobile-app",
+    "ocr-space",
+    "typescript"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/scan-text-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/scan-text-app/issues"
+  },
+  "homepage": "https://github.com/yourusername/scan-text-app#readme",
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
@@ -46,7 +69,7 @@
     "@types/react": "~19.1.0",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~10.0.0",
+    "react-native-dotenv": "^3.4.11",
     "typescript": "~5.9.2"
-  },
-  "private": true
+  }
 }
