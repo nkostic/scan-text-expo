@@ -1,50 +1,76 @@
-# Welcome to your Expo app 👋
+# Text Scanner App - OCR POC
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple React Native Expo app that scans text from photos using OCR (Optical Character Recognition).
 
-## Get started
+## Features
 
-1. Install dependencies
+- Take a photo using your device camera
+- Automatically extract text from the photo using OCR.space API
+- Display extracted text on screen
+- Copy extracted text to clipboard
+- Automatically delete photos after processing
 
+## Tech Stack
+
+- **React Native** with **Expo**
+- **expo-camera** - Camera functionality
+- **expo-image-picker** - Image capture
+- **expo-clipboard** - Copy to clipboard
+- **expo-file-system** - File management
+- **OCR.space API** - Free OCR service (25,000 requests/month)
+
+## Setup
+
+1. Install dependencies:
    ```bash
-   npm install
+   pnpm install
    ```
 
-2. Start the app
-
+2. Start the development server:
    ```bash
-   npx expo start
+   pnpm start
    ```
 
-In the output, you'll find options to open the app in a
+3. Run on your device:
+   - Scan the QR code with **Expo Go** app (iOS/Android)
+   - Or press `i` for iOS simulator / `a` for Android emulator
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Usage
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+1. Tap the "Scan Text" button
+2. Allow camera permissions when prompted
+3. Take a photo of text you want to extract
+4. Wait for OCR processing (usually 2-5 seconds)
+5. View the extracted text on screen
+6. Tap "Copy to Clipboard" to copy the text
+7. Paste the text anywhere on your phone
 
-## Get a fresh project
+## Important Notes
 
-When you're ready, run:
+- **Camera Permission**: The app will request camera access on first use
+- **Internet Required**: OCR processing requires an internet connection
+- **Photo Privacy**: Photos are automatically deleted after text extraction
+- **API Limits**: Free tier allows 25,000 requests/month via OCR.space
 
-```bash
-npm run reset-project
+## API Key
+
+The app uses a free OCR.space API key included in the code. For production use, you should:
+1. Register at https://ocr.space/ocrapi
+2. Get your own API key
+3. Replace the key in `app/index.tsx`
+
+## File Structure
+
+```
+app/
+├── index.tsx       # Main scanner screen
+└── _layout.tsx     # App layout configuration
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Future Enhancements
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Support for multiple languages
+- Batch processing of multiple photos
+- History of scanned texts
+- Export to different formats (PDF, TXT)
+- Offline OCR using on-device processing
