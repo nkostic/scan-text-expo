@@ -246,7 +246,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - GitHub: [@nkostic](https://github.com/nkostic)
 
-**Project Link**: [https://github.com/nkostic/scan-text-expo](https://github.com/yourusername/scan-text-expo)
+**Project Link**: [https://github.com/nkostic/scan-text-expo](https://github.com/nkostic/scan-text-expo)
 
 ---
 
