@@ -29,11 +29,13 @@ A powerful, open-source React Native mobile app for scanning and extracting text
 ## 🎬 Demo
 
 **Scan with Guide:**
+
 - Professional camera interface with alignment guides
 - Green corner markers for precise framing
 - Darkened overlay for clear guidance
 
 **Quick Scan:**
+
 - Instant photo capture with built-in cropping
 - Fast processing for simple documents
 
@@ -48,17 +50,20 @@ A powerful, open-source React Native mobile app for scanning and extracting text
 ### Steps
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/yourusername/scan-text-app.git
    cd scan-text-app
    ```
 
 2. **Install dependencies**
+
    ```bash
    pnpm install
    ```
 
 3. **Set up environment variables**
+
    ```bash
    # Copy the example environment file
    cp .env.example .env
@@ -70,6 +75,7 @@ A powerful, open-source React Native mobile app for scanning and extracting text
    Get your free API key at [OCR.space](https://ocr.space/ocrapi) (25,000 requests/month free tier)
 
 4. **Start the development server**
+
    ```bash
    pnpm start
    ```
@@ -85,6 +91,7 @@ A powerful, open-source React Native mobile app for scanning and extracting text
 ### Basic Workflow
 
 1. **Scan with Guide** (Recommended)
+
    - Tap "📷 Scan with Guide" button
    - Camera opens with alignment overlay
    - Position text within the square guide
@@ -92,6 +99,7 @@ A powerful, open-source React Native mobile app for scanning and extracting text
    - Text appears automatically
 
 2. **Quick Scan** (Alternative)
+
    - Tap "Quick Scan (No Guide)"
    - Take photo and crop as needed
    - Text is extracted and displayed
@@ -104,6 +112,7 @@ A powerful, open-source React Native mobile app for scanning and extracting text
 ### Debug Mode
 
 Check the browser console or debug panel for:
+
 - OCR API response times
 - Image quality scores
 - Confidence levels
@@ -135,31 +144,33 @@ OCR_LANGUAGE=eng
 ### Customization
 
 **Camera Guide Dimensions** (`app/camera.tsx`):
+
 ```typescript
-const GUIDE_WIDTH = SCREEN_WIDTH * 0.85;  // 85% of screen
+const GUIDE_WIDTH = SCREEN_WIDTH * 0.85; // 85% of screen
 const GUIDE_HEIGHT = SCREEN_HEIGHT * 0.4; // 40% of screen
 ```
 
 **OCR Settings** (`app/index.tsx`):
+
 ```typescript
-formData.append('language', 'eng');      // Language: eng, spa, fra, etc.
-formData.append('OCREngine', '2');       // Engine: 1 or 2
-formData.append('scale', 'true');        // Image scaling
-formData.append('detectOrientation', 'true'); // Auto-rotate
+formData.append("language", "eng"); // Language: eng, spa, fra, etc.
+formData.append("OCREngine", "2"); // Engine: 1 or 2
+formData.append("scale", "true"); // Image scaling
+formData.append("detectOrientation", "true"); // Auto-rotate
 ```
 
 ## 🏗️ Tech Stack
 
-| Category | Technology |
-|----------|-----------|
-| **Framework** | React Native 0.81.5 |
-| **Platform** | Expo ~54.0.20 |
-| **Routing** | Expo Router ~6.0.14 |
-| **Language** | TypeScript 5.9.2 |
-| **Camera** | expo-camera 17.0.8 |
-| **OCR** | OCR.space API |
-| **HTTP Client** | axios 1.13.1 |
-| **Package Manager** | pnpm |
+| Category            | Technology          |
+| ------------------- | ------------------- |
+| **Framework**       | React Native 0.81.5 |
+| **Platform**        | Expo ~54.0.20       |
+| **Routing**         | Expo Router ~6.0.14 |
+| **Language**        | TypeScript 5.9.2    |
+| **Camera**          | expo-camera 17.0.8  |
+| **OCR**             | OCR.space API       |
+| **HTTP Client**     | axios 1.13.1        |
+| **Package Manager** | pnpm                |
 
 ## 📂 Project Structure
 
@@ -192,6 +203,7 @@ scan-text-app/
 We love contributions! Please read our [Contributing Guide](CONTRIBUTING.md) to get started.
 
 **Quick Start for Contributors:**
+
 1. Fork the repo
 2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
 3. Commit changes (`git commit -m 'Add AmazingFeature'`)
@@ -230,12 +242,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-**Project Maintainer**: [Your Name]
+**Project Maintainer**: Nenad Kostic
 
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
+- GitHub: [@nkostic](https://github.com/nkostic)
 
-**Project Link**: [https://github.com/yourusername/scan-text-app](https://github.com/yourusername/scan-text-app)
+**Project Link**: [https://github.com/nkostic/scan-text-expo](https://github.com/yourusername/scan-text-expo)
 
 ---
 
